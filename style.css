@@ -1,0 +1,40 @@
+:root{
+  --bg:#0f0d0b;
+  --card:#121212;
+  --gold1:#f2c94c;
+  --gold2:#d4a72a;
+  --muted:#cfcfcf;
+  --accent:#ffe9a8;
+  --glass: rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;color:var(--muted);background:linear-gradient(180deg,#060506 0%, #0f0d0b 100%);-webkit-font-smoothing:antialiased}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:linear-gradient(90deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03)}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:48px;height:48px;border-radius:10px}
+.brand h1{margin:0;font-size:20px;color:var(--gold1)}
+.tag{margin:0;font-size:12px;color:var(--muted)}
+.actions{display:flex;gap:10px}
+.container{max-width:940px;margin:22px auto;padding:0 14px;display:grid;grid-template-columns:1fr;gap:18px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.03)}
+h2{margin:0 0 10px 0;color:var(--gold1)}
+.upload-card input[type=file]{display:block;padding:10px;border-radius:8px;background:var(--glass);color:var(--muted)}
+.hint{font-size:13px;color:#b8b8b8;margin-top:8px}
+.btn-row{display:flex;gap:10px;margin-top:12px}
+.btn{border:0;padding:12px 18px;border-radius:14px;cursor:pointer;font-weight:600}
+.btn-gold{background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#151010}
+.btn-gold-outline{background:transparent;border:1px solid rgba(210,168,50,0.12);color:var(--gold1);padding:10px 16px}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.05);color:var(--muted)}
+.extract-box{background:rgba(255,255,255,0.02);padding:14px;border-radius:8px;margin-top:8px;color:var(--accent)}
+.extract-box div{margin:6px 0}
+.extract-box pre{white-space:pre-wrap;color:#e8e1c3;background:rgba(0,0,0,0.2);padding:10px;border-radius:8px}
+.history-card .item{padding:10px;border-radius:8px;background:rgba(0,0,0,0.2);margin:8px 0;display:flex;justify-content:space-between;align-items:center}
+.creature-area{display:flex;gap:12px;flex-wrap:wrap}
+.creature{width:82px;height:82px;border-radius:12px;background:linear-gradient(180deg,rgba(0,0,0,0.2),rgba(255,255,255,0.02));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+.creature img{width:64px;height:64px}
+.footer{padding:18px;text-align:center;color:#777;margin-top:30px}
+@media(min-width:880px){
+  .container{grid-template-columns:1fr 420px}
+  .creatures-card{grid-column:2}
+  .analytics-card{grid-column:2}
+}
