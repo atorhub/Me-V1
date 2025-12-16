@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- META : CORE DOCUMENT SETTINGS -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- TITLE : APPLICATION IDENTITY -->
   <title>ME</title>
+
+  <!-- STYLE : GLOBAL THEME (SAFE) -->
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
-  <!-- UI SHELL (STAGE) -->
+  <!--
+    UI SHELL (IMMUTABLE)
+    -------------------
+    Purpose:
+    - Provides permanent DOM anchors
+    - Must NEVER contain logic
+    - Must NEVER be removed or renamed
+    - If this breaks, the app breaks
+  -->
   <div id="app-shell">
+
+    <!-- HEADER : BRANDING / NAVIGATION AREA -->
     <header id="app-header"></header>
+
+    <!-- MAIN : DYNAMIC CONTENT RENDER TARGET -->
     <main id="app-main"></main>
+
+    <!-- FOOTER : STATUS / META INFORMATION -->
     <footer id="app-footer"></footer>
+
   </div>
 
-  <!-- ONLY ONE SCRIPT ENTRY -->
+  <!--
+    SCRIPT ENTRY (SINGLE GATE)
+    -------------------------
+    Rules:
+    - Only one entry file
+    - No inline scripts
+    - All failures must be handled inside main.js
+  -->
   <script type="module" src="./main.js"></script>
 </body>
 </html>
