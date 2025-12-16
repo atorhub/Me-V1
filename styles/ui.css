@@ -23,3 +23,13 @@ nav a {
   padding: 1rem;
   border-radius: 12px;
 }
+.app-header,
+.app-footer {
+  background: #111;
+  color: #fff;
+  padding: 16px;
+}
+
+.app-main {
+  padding: 16px;
+}
