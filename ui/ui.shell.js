@@ -1,29 +1,19 @@
-import { renderPage } from './ui.router.js';
+console.log("UI SHELL LOADED");
 
-export function initUIShell() {
-  const root = document.getElementById('root');
-  if (!root) return;
+const root = document.getElementById("root");
 
+if (root) {
   root.innerHTML = `
-    <header class="app-header">
-      <div class="logo">ME</div>
-      <nav>
-        <a href="#/">Home</a>
-        <a href="#/upload">Upload</a>
-        <a href="#/history">History</a>
-        <a href="#/settings">Settings</a>
-      </nav>
+    <header style="padding:16px;background:#111;color:#fff">
+      <h1>ME</h1>
     </header>
 
-    <main id="app"></main>
+    <main style="padding:16px">
+      <p>The UI magician is alive 🎭</p>
+    </main>
 
-    <footer class="footer">
-      Powered by an Immortal Core 👑
+    <footer style="padding:16px;background:#111;color:#aaa">
+      Immortal Core Ready 👑
     </footer>
   `;
-
-  window.addEventListener('hashchange', renderPage);
-  renderPage();
 }
-
-initUIShell();
