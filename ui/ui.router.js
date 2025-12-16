@@ -28,3 +28,19 @@ export function renderPage() {
     `;
   }
 }
+export function renderPage() {
+  const main = document.querySelector(".app-main");
+  if (!main) return;
+
+  const route = location.hash || "#/";
+
+  if (route === "#/upload") {
+    main.innerHTML = "<h2>Upload</h2>";
+  } else if (route === "#/history") {
+    main.innerHTML = "<h2>History</h2>";
+  } else if (route === "#/settings") {
+    main.innerHTML = "<h2>Settings</h2>";
+  } else {
+    main.innerHTML = "<h2>Home</h2>";
+  }
+}
