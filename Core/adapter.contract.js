@@ -21,13 +21,15 @@ export function createAdapterResult({
 
 export function isValidAdapterResult(result) {
   return (
-    result !== null &&
-    typeof result === 'object' &&
+    result &&
+    Object.isFrozen(result) &&
     typeof result.source === 'string' &&
     result.source.length > 0 &&
-    result.proposal !== undefined &&
+    'proposal' in result &&
     typeof result.confidence === 'number' &&
+    Number.isFinite(result.confidence) &&
     result.confidence >= 0 &&
-    result.confidence <= 1
+    result.confidence <= 1 &&
+    typeof result.timestamp === 'number'
   );
-    }
+}
