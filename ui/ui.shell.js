@@ -6,6 +6,12 @@ if (root) {
   root.innerHTML = `
     <header class="app-header">
       <h1>ME</h1>
+      <nav>
+        <a href="#/">Home</a>
+        <a href="#/upload">Upload</a>
+        <a href="#/history">History</a>
+        <a href="#/settings">Settings</a>
+      </nav>
     </header>
 
     <main class="app-main">
