@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.app-header, .footer {
+  padding: 1rem;
+  background: #111;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  margin-right: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 1rem;
+  border-radius: 12px;
+}
