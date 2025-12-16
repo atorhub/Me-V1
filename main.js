@@ -1,3 +1,10 @@
+// SAFE NAVIGATION DATA (NO MODULES)
+const navigationItems = [
+  { id: "home", label: "Home" },
+  { id: "projects", label: "Projects" },
+  { id: "about", label: "About" }
+];
+
 // main.js
 (function boot() {
   try {
