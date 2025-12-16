@@ -20,3 +20,21 @@
     console.error(err);
   }
 })();
+
+import { navigationItems } from "./ui/navigation.js";
+
+function renderNavigation(items) {
+  const header = document.getElementById("app-header");
+  if (!header) return;
+
+  const nav = document.createElement("nav");
+
+  items.forEach(item => {
+    const btn = document.createElement("button");
+    btn.textContent = item.label;
+    btn.dataset.page = item.id;
+    nav.appendChild(btn);
+  });
+
+  header.appendChild(nav);
+}
