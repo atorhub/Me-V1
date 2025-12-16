@@ -1,51 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <!-- META : CORE DOCUMENT SETTINGS -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ANJ Invoice — Hybrid D</title>
 
-  <!-- TITLE : APPLICATION IDENTITY -->
-  <title>ME</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="stylesheet" href="style.css" />
 
-  <!-- STYLE : GLOBAL THEME (SAFE) -->
-  <link rel="stylesheet" href="./style.css" />
+<!-- PDF.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<!-- Tesseract.js (web worker based) -->
+<script src="https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
+
+<!-- html2canvas + jsPDF for direct PDF exports -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- App script files -->
+<script src="creatures.js" defer></script>
+<script src="script.js" defer></script>
 </head>
-<body>
+<body class="bg-blackgold">
 
-  <!--
-    UI SHELL (IMMUTABLE)
-    -------------------
-    Purpose:
-    - Provides permanent DOM anchors
-    - Must NEVER contain logic
-    - Must NEVER be removed or renamed
-    - If this breaks, the app breaks
-  -->
-  <div id="app-shell">
-
-    <!-- HEADER : BRANDING / NAVIGATION AREA -->
-    <header id="app-header"></header>
-
-    <!-- MAIN : DYNAMIC CONTENT RENDER TARGET -->
-    <main id="app-main"></main>
-
-    <!-- FOOTER : STATUS / META INFORMATION -->
-    <footer id="app-footer"></footer>
-
+<header class="topbar">
+  <div class="brand">
+    <img src="assets/icons/icon-48.png" alt="logo" class="logo"/>
+    <div>
+      <h1>ANJ Invoice</h1>
+      <p class="tag">Smart Bill Parser · History · Creatures</p>
+    </div>
   </div>
 
-  <!--
-    SCRIPT ENTRY (SINGLE GATE)
-    -------------------------
-    Rules:
-    - Only one entry file
-    - No inline scripts
-    - All failures must be handled inside main.js
-  -->
+  <div class="actions">
+    <button id="exportAll" class="btn btn-gold">Export All (JSON)</button>
+    <button id="clearHistory" class="btn btn-outline">Clear History</button>
+  </div>
+</header>
 
- <script>
-  document.body.innerHTML = "<h1>JS IS RUNNING</h1>";
- </script>
+<main class="container">
+  <section class="card upload-card">
+    <h2>Upload Bill / Invoice</h2>
+    <input id="fileInput" type="file" accept="application/pdf,image/*,.txt" />
+    <div class="hint">Supported: PDF, PNG, JPG, TXT — offline OCR via Tesseract + PDF.js</div>
+
+    <div class="btn-row">
+      <button id="parseBtn" class="btn btn-gold">Parse Bill</button>
+      <button id="ocrBtn" class="btn btn-outline">OCR (image)</button>
+    </div>
+  </section>
+
+  <section class="card extract-card">
+    <h2>Extracted Information</h2>
+    <div id="extracted" class="extract-box">
+      <div>Date: <span id="fDate">-</span></div>
+      <div>Total: <span id="fTotal">-</span></div>
+      <div>Merchant: <span id="fMerchant">-</span></div>
+      <div>Category: <span id="fCategory">-</span></div>
+      <div>Items (best-effort): <pre id="fItems">None detected</pre></div>
+    </div>
+
+    <div class="btn-row">
+      <button id="saveHistory" class="btn btn-gold">Save to History</button>
+      <button id="downloadPdf" class="btn btn-gold-outline">Download PDF</button>
+      <button id="printBtn" class="btn btn-outline">Print</button>
+    </div>
+  </section>
+
+  <section class="card history-card">
+    <h2>History</h2>
+    <div id="historyList">No saved bills yet.</div>
+  </section>
+
+  <section class="card analytics-card">
+    <h2>Analytics</h2>
+    <div id="analyticsBox">—</div>
+  </section>
+
+  <section class="card creatures-card">
+    <h2>Companions</h2>
+    <div id="creatureArea" class="creature-area">
+      <!-- creatures will be injected here (creatures.js) -->
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  ANJ Creator Hub © 2025 · Invoice Hybrid-D
+</footer>
+
+<!-- PWA install prompt hook -->
+<script>
+  // register service worker if available
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(()=>console.log('sw registered'))
+      .catch(e=>console.warn('sw failed', e));
+  }
+</script>
+
 </body>
-</html>
+      </html>
+  
