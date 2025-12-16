@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ME</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="stylesheet" href="styles/ui.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
-  <div id="root"></div>
+  <!-- UI SHELL (STAGE) -->
+  <div id="app-shell">
+    <header id="app-header"></header>
+    <main id="app-main"></main>
+    <footer id="app-footer"></footer>
+  </div>
 
-  <script type="module" src="ui/ui.shell.js"></script>
+  <!-- ONLY ONE SCRIPT ENTRY -->
+  <script type="module" src="./main.js"></script>
 </body>
 </html>
